@@ -58,17 +58,22 @@ def load_url():
 
 def load_config(config_file):
   global config
-  f = open(config_file)
-  config = yaml.safe_load(f)
-  f.close()
-  return config
+  if(os.path.isfile(config_file)):
+    f = open(config_file)
+    config = yaml.safe_load(f)
+    f.close()
 
 def main(argv):
-  load_config('service.yaml')
-  print config['url_location']
-  print 'Number of arguments:', len(argv), 'arguments.'
+  if(len(argv) > 0):
+    load_config(argv[0])
+  else:
+    load_config('service.yaml')
+  if(not config):
+    print 'Not config loaded, please add a config file'
+    print 'Usage: python server.py configfile.yaml'
+    return
   print 'Argument List:', str(argv)
-  run(host='localhost', port=8080)
+  run(host='localhost', port=config['port'])
 
 if __name__ == "__main__":
   main(sys.argv[1:])
