@@ -36,7 +36,7 @@ sudo pip install -r ~/harget/dependencies.txt -q > /dev/null
 sudo cp ~/harget/setup/config.yaml ~/harget/service.yaml
 
 sudo mkdir /var/log/harget-server
-sudo chown pi /var/log/harget-server
+sudo chown pi:pi /var/log/harget-server
 
 echo "Setup server to run automagically at startup"
 sudo ln -s ~/harget/setup/supervisor_harget_server.conf /etc/supervisor/conf.d/harget_server.conf
