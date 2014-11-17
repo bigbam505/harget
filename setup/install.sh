@@ -9,7 +9,8 @@ MIN_REQ="512000"
 
 if [ $ROOT_AVAIL -lt $MIN_REQ ]; then
   echo "Insufficient disk space. Make sure you have at least 500MB available on the root partition."
-  exit 1
+  # LEts just have this be a warning for now
+  #exit 1 
 fi
 
 echo "Installing system dependencies..."
