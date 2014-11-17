@@ -76,7 +76,7 @@ def main(argv):
     print 'Usage: python server.py configfile.yaml'
     return
   print 'Argument List:', str(argv)
-  run(host='localhost', port=config['port'])
+  run(host=config['host'], port=config['port'])
 
 if __name__ == "__main__":
   main(sys.argv[1:])
