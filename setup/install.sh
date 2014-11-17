@@ -12,6 +12,16 @@ if [ $ROOT_AVAIL -lt $MIN_REQ ]; then
   exit 1
 fi
 
-echo "Installing more dependencies..."
+echo "Installing system dependencies..."
+sudo apt-get -y -qq install git-core python-pip vim > /dev/null
 
-sudo pip install -r ./dependencies.txt -q > /dev/null
+
+# Setup the app location
+sudo mkdir /harget > /dev/null
+sudo chown pi /harget > /dev/null
+sudo git clone https://github.com/bigbam505/harget.git /harget > /dev/null
+
+
+echo "Installing more dependencies..."
+sudo pip install -r /harget/dependencies.txt -q > /dev/null
+
