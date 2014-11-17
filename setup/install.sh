@@ -33,7 +33,7 @@ sudo git clone https://github.com/bigbam505/harget.git ~/harget > /dev/null
 echo "Installing more dependencies..."
 sudo pip install -r ~/harget/dependencies.txt -q > /dev/null
 
-sudo cp ~/harget/setup/config.yaml ~/harget/service_config.yaml
+sudo cp ~/harget/setup/config.yaml ~/harget/service.yaml
 
 sudo mkdir /var/log/harget-server
 sudo chown pi /var/log/harget-server
