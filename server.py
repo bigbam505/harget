@@ -52,6 +52,9 @@ def load_url():
   if(not os.path.isdir(os.path.dirname(url_file_path))):
     os.makedirs(os.path.dirname(url_file_path))
 
+  if(not os.path.isfile(url_file_path)):
+    save_url('')
+
   f = open(url_file_path, 'r')
   return json_parse(f.read())
 
