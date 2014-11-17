@@ -1,0 +1,5 @@
+# Config V1.0
+url_location: ./data/url.json
+port: 80
+host: '0.0.0.0'
+
