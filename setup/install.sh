@@ -72,7 +72,7 @@ echo "Setup viewer to run automagically at startup"
 mkdir -p ~/.config/lxsession/LXDE/
 echo "@$install_directory/setup/autostart.sh" > ~/.config/lxsession/LXDE/autostart
 
-if [-d /etc/xdg/lxsession/LXDE/autostart ]; then
+if [ -d "/etc/xdg/lxsession/LXDE/autostart" ]; then
   echo 'test'
   #sudo mv /etc/xdg/lxsession/LXDE/autostart /etc/xdg/lxsession/LXDE/autostart.bak
 fi
