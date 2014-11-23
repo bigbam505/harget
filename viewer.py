@@ -67,7 +67,11 @@ def load_browser(url=None):
     browser_send(uzbl_rc)
 
 def update_browser_url(url, cb=lambda _: True):
-  browser_send('uri ' + url, cb=cb)
+  if not (browser is None) and browser.process.alive:
+    browser_send('uri ' + url, cb=cb)
+  else:
+    logging.debug('Have to restart the browser')
+    load_browser(url)
 
 def change_url(url):
   global current_browser_url
@@ -105,8 +109,8 @@ def setup():
   load_config()
   set_logging_level()
 
+  # this handles the input from the autostart
   signal(SIGUSR1, dummy_function)
-  #signal(SIGUSR2, dummy_function)
 
 def main(argv):
   global config_file
@@ -121,7 +125,7 @@ def main(argv):
     logging.error('Usage: python viewer.py service.yaml')
     return
 
-  logging.debug('Woah It worked')
+  logging.debug('Everything appears to be correct, lets begin')
 
   load_browser(url=BLANK_PAGE)
   while True:
