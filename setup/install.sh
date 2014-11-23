@@ -9,8 +9,7 @@ MIN_REQ="512000"
 
 if [ $ROOT_AVAIL -lt $MIN_REQ ]; then
   echo "Insufficient disk space. Make sure you have at least 500MB available on the root partition."
-  # LEts just have this be a warning for now
-  #exit 1 
+  exit 1
 fi
 
 echo "Updating system package database..."
@@ -25,15 +24,15 @@ sudo apt-get -y -qq install git-core python-pip vim supervisor > /dev/null
 
 
 # Setup the app location
-sudo mkdir ~/harget > /dev/null
-sudo chown pi ~/harget > /dev/null
-sudo git clone https://github.com/bigbam505/harget.git ~/harget > /dev/null
+mkdir ~/harget > /dev/null
+chown pi ~/harget > /dev/null
+git clone https://github.com/bigbam505/harget.git ~/harget > /dev/null
 
 
 echo "Installing more dependencies..."
 sudo pip install -r ~/harget/dependencies.txt -q > /dev/null
 
-sudo cp ~/harget/setup/config.yaml ~/harget/service.yaml
+cp ~/harget/setup/config.yaml ~/harget/service.yaml
 
 sudo mkdir /var/log/harget-server
 sudo chown pi:pi /var/log/harget-server
